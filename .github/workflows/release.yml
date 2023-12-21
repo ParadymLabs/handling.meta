@@ -8,13 +8,19 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-
+    
+    strategy:
+      matrix:
+        node-version: [14.x, 16.x, 18.x]
+        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
+        
     steps:
     - uses: actions/checkout@v2
       # Add steps to setup your build environment if necessary
 
     - name: Generate handling.meta
       run: |
+        app.js
         # Add commands to generate handling.meta here
 
     - name: Create Release
