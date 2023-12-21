@@ -21,10 +21,6 @@ jobs:
       run: npm install
       # If you're using Yarn, replace with `run: yarn install`
 
-    - name: Build Project
-      run: npm run build
-      # Replace `npm run build` with your project's build command, if different
-
     - name: Generate handling.meta
       run: node app.js
     - name: Create Release
