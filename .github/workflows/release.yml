@@ -17,12 +17,16 @@ jobs:
       with:
         node-version: '16'
 
-    - name: Generate handling.meta
-      run: |
-        npm install
-        npm run build
-        node app.js  # Assuming app.js generates handling.meta
+    - name: Install Dependencies
+      run: npm install
+      # If you're using Yarn, replace with `run: yarn install`
 
+    - name: Build Project
+      run: npm run build
+      # Replace `npm run build` with your project's build command, if different
+
+    - name: Generate handling.meta
+      run: node app.js
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
