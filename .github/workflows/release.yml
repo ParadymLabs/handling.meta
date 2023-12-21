@@ -20,7 +20,7 @@ jobs:
     - name: Generate handling.meta
       run: |
         npm install
-        npm build
+        npm run build
         node app.js  # Assuming app.js generates handling.meta
 
     - name: Create Release
