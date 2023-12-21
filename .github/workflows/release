@@ -1,0 +1,39 @@
+name: Release handling.meta
+
+on:
+  push:
+    branches:
+      - main  # Trigger on push to main branch
+
+jobs:
+  build-and-release:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+      # Add steps to setup your build environment if necessary
+
+    - name: Generate handling.meta
+      run: |
+        # Add commands to generate handling.meta here
+
+    - name: Create Release
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        tag_name: ${{ github.ref }}
+        release_name: Release-${{ github.run_number }}
+        draft: false
+        prerelease: false
+
+    - name: Upload handling.meta
+      uses: actions/upload-release-asset@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      with:
+        upload_url: ${{ steps.create_release.outputs.upload_url }}
+        asset_path: ./path/to/handling.meta
+        asset_name: handling.meta
+        asset_content_type: text/plain
