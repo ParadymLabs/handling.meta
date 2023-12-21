@@ -2,8 +2,8 @@ name: Release handling.meta
 
 on:
   push:
-    branches:
-      - main  # Trigger on push to main branch
+    tags:
+      - '*'  # This triggers the workflow for any tag push
 
 jobs:
   build-and-release:
@@ -29,7 +29,7 @@ jobs:
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
-        tag_name: ${{ github.ref }}
+        tag_name: v${{ github.run_number }} 
         release_name: Release-${{ github.run_number }}
         draft: false
         prerelease: false
