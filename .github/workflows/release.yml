@@ -8,20 +8,18 @@ on:
 jobs:
   build-and-release:
     runs-on: ubuntu-latest
-    
-    strategy:
-      matrix:
-        node-version: [14.x, 16.x, 18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-        
+
     steps:
     - uses: actions/checkout@v2
-      # Add steps to setup your build environment if necessary
+
+    - name: Set up Node.js 16
+      uses: actions/setup-node@v2
+      with:
+        node-version: '16'
 
     - name: Generate handling.meta
       run: |
-        app.js
-        # Add commands to generate handling.meta here
+        node app.js  # Assuming app.js generates handling.meta
 
     - name: Create Release
       id: create_release
@@ -40,6 +38,6 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         upload_url: ${{ steps.create_release.outputs.upload_url }}
-        asset_path: ./path/to/handling.meta
+        asset_path: ./path/to/handling.meta  # Replace with the actual path
         asset_name: handling.meta
         asset_content_type: text/plain
