@@ -66,8 +66,6 @@ async function processMetaFiles() {
 
     await fs.promises.writeFile('handling.meta', xml);
 
-    console.log('handling.meta file created successfully.');
-
   } catch (err) {
     console.error('Error processing meta files:', err);
   }
