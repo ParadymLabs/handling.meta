@@ -3,7 +3,7 @@ name: Release handling.meta
 on:
   push:
     tags:
-      - '*'  # This triggers the workflow for any tag push
+      - 'b*'  # This triggers the workflow for any tag push
 
 jobs:
   build-and-release:
