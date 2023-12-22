@@ -1,6 +1,6 @@
 # handling.meta
 
-This is a utility for GTAV / FiveM to concatenate multiple handling.meta files into a singular file. I don't believe this step is necessary but it does make working on the files a lot more comfortable so I hope you find this useful.
+This is a utility for GTAV / FiveM to concatenate multiple handling.meta files into a singular file while removing duplicate entries (there are many). I don't believe this step is necessary but it does make working on the files a lot more comfortable so I hope you find this useful.
 
 Made in collaboration with [iZolox](https://github.com/izolox)
 
